@@ -13,10 +13,7 @@ class dsu {
 			_rank.resize(n, 0);
 		}
 		int findParent(int node) {
-			while (node != _parent[node]) {
-				node = _parent[node];
-			}
-			return node;
+			return node == _parent[node] ? node : _parent[node] = findParent(_parent[node]);
 		}
 		void unite(int node1, int node2) {
 			node1 = findParent(node1);
